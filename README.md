@@ -29,7 +29,7 @@ You can clone it from github with this link :
 https://github.com/CarmineD8/assignment_2_2024
 
 
-Clone the repository into your ros workspace and compile with:
+Then, clone the rt1_assignment2_1 repository into your ros workspace and compile with:
 
     catkin_make
 
