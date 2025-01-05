@@ -42,6 +42,7 @@ public:
     void setTarget(double x, double y)
     {
         assignment_2_2024::PlanningGoal goal;
+        goal.target_pose.header.stamp = ros::Time::now();
         goal.target_pose.header.frame_id = "odom";
         goal.target_pose.pose.position.x = x;
         goal.target_pose.pose.position.y = y;

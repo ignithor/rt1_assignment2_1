@@ -10,6 +10,7 @@ project(rt1_assignment2_1)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  geometry_msgs
   nav_msgs
   message_generation
   message_runtime
@@ -57,11 +58,10 @@ add_message_files(
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  Target.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -74,6 +74,7 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
+  geometry_msgs
 )
 
 ################################################
@@ -137,6 +138,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(robot_target src/robot_target.cpp)
+add_executable(last_target_service src/last_target_service.cpp)
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,6 +156,9 @@ target_link_libraries(robot_target
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(last_target_service
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############
