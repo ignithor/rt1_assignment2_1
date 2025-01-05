@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_runtime
   actionlib
   actionlib_msgs
+  assignment_2_2024
 )
 
 ## System dependencies are found with CMake's conventions
