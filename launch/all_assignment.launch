@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find assignment_2_2024)/launch/assignment1.launch" />
+    <node pkg="rt1_assignment2_1" type="robot_target" name="robot_target" output="screen" />
+    <node pkg="rt1_assignment2_1" type="last_target_service" name="last_target_service" />
+</launch>

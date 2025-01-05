@@ -82,14 +82,14 @@ private:
         {
             ROS_WARN("Goal did not succeed: %s", state.toString().c_str());
         }
-        std::cout << "Enter command (set x y / cancel / end): \n";
+            ROS_INFO("Enter command (set x y / cancel / end):");
     }
 
     void handleUserInput()
     {
         while (ros::ok() && !stop_thread_)
         {
-            std::cout << "Enter command (set x y / cancel / end): \n";
+            ROS_INFO("Enter command (set x y / cancel / end):");
             std::string command;
             std::cin >> command;
 
