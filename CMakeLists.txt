@@ -62,6 +62,7 @@ add_message_files(
 add_service_files(
   FILES
   Target.srv
+  Distance.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -140,6 +141,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(robot_target src/robot_target.cpp)
 add_executable(last_target_service src/last_target_service.cpp)
+add_executable(distance_to_target_service src/distance_to_target_service.cpp)
 
 
 ## Rename C++ executable without prefix
@@ -158,6 +160,10 @@ target_link_libraries(robot_target
 )
 
 target_link_libraries(last_target_service
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(distance_to_target_service
   ${catkin_LIBRARIES}
 )
 #############
