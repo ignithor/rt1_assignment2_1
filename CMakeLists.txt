@@ -142,6 +142,10 @@ include_directories(
 add_executable(robot_target src/robot_target.cpp)
 add_executable(last_target_service src/last_target_service.cpp)
 add_executable(distance_to_target_service src/distance_to_target_service.cpp)
+add_executable(obstacle_warning_publisher src/obstacle_warning_publisher.cpp)
+# add_executable(goal_feedback_listener src/goal_feedback_listener.cpp)
+
+
 
 
 ## Rename C++ executable without prefix
@@ -164,6 +168,15 @@ target_link_libraries(last_target_service
 )
 
 target_link_libraries(distance_to_target_service
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(obstacle_warning_publisher
+  ${catkin_LIBRARIES}
+)
+
+
+target_link_libraries(goal_feedback_listener
   ${catkin_LIBRARIES}
 )
 #############
