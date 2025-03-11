@@ -1,0 +1,11 @@
+<map id="src/robot_target.cpp" name="src/robot_target.cpp">
+<area shape="rect" id="node1" title="A ROS node to control the robot&#39;s target position and handle user input." alt="" coords="606,5,758,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,84,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="108,87,275,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="299,80,465,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="489,80,667,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="691,80,881,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="905,80,1117,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1141,87,1205,114"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1229,87,1309,114"/>
+</map>

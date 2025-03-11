@@ -1,0 +1,84 @@
+\hypertarget{robot__target_8cpp}{}\doxysection{src/robot\+\_\+target.cpp File Reference}
+\label{robot__target_8cpp}\index{src/robot\_target.cpp@{src/robot\_target.cpp}}
+
+
+A R\+OS node to control the robot\textquotesingle{}s target position and handle user input.  
+
+
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$nav\+\_\+msgs/\+Odometry.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/simple\+\_\+action\+\_\+client.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/terminal\+\_\+state.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rt1\+\_\+assignment2\+\_\+1/\+Odom\+\_\+simplified.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}assignment\+\_\+2\+\_\+2024/\+Planning\+Action.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for robot\+\_\+target.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{robot__target_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_robot_target}{Robot\+Target}}
+\begin{DoxyCompactList}\small\item\em A class to handle robot target operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{robot__target_8cpp_ad5f8ee725c479e177083d9fcc21c24f7}\label{robot__target_8cpp_ad5f8ee725c479e177083d9fcc21c24f7}} 
+typedef actionlib\+::\+Simple\+Action\+Client$<$ assignment\+\_\+2\+\_\+2024\+::\+Planning\+Action $>$ {\bfseries Planning\+Action\+Client}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{robot__target_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Main function for the robot\+\_\+target node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A R\+OS node to control the robot\textquotesingle{}s target position and handle user input. 
+
+\begin{DoxyAuthor}{Author}
+Paul Pham Dang 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+11/03/2025
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ °/odom
+
+Publishes to\+: ~\newline
+ °/odom\+\_\+simplified
+
+Description\+:
+
+This node allows the user to set a target position for the robot or cancel the current goal. It subscribes to the {\ttfamily /odom} topic to get the robot\textquotesingle{}s current position and publishes a simplified version of the odometry data to {\ttfamily /odom\+\_\+simplified}. It also provides an interactive command-\/line interface for setting or canceling goals. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{robot__target_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{robot__target_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{robot\_target.cpp@{robot\_target.cpp}!main@{main}}
+\index{main@{main}!robot\_target.cpp@{robot\_target.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main function for the robot\+\_\+target node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments. \\
+\hline
+{\em argv} & Array of command-\/line arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on successful completion.
+\end{DoxyReturn}
+Initializes the R\+OS node and starts the \mbox{\hyperlink{class_robot_target}{Robot\+Target}} object. 

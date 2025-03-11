@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_11',['main',['../last__target__service_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'last_target_service.cpp']]]
+  ['getlasttarget_15',['getLastTarget',['../last__target__service_8cpp.html#a4497a5fc9ddade4d03b53fbab1e7ffe0',1,'last_target_service.cpp']]],
+  ['goalcallback_16',['goalCallback',['../last__target__service_8cpp.html#afb3c19da564a434913537db8aabb337e',1,'last_target_service.cpp']]]
 ];

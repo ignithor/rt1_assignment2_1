@@ -1,16 +1,81 @@
 \hypertarget{class_robot_target}{}\doxysection{Robot\+Target Class Reference}
 \label{class_robot_target}\index{RobotTarget@{RobotTarget}}
+
+
+A class to handle robot target operations.  
+
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_robot_target_a2f13f91d8b046588e19b4b1a15ae4f6f}\label{class_robot_target_a2f13f91d8b046588e19b4b1a15ae4f6f}} 
-void {\bfseries set\+Target} (double x, double y)
-\item 
-\mbox{\Hypertarget{class_robot_target_a560d2067226744ad73d92144d26b132b}\label{class_robot_target_a560d2067226744ad73d92144d26b132b}} 
-void {\bfseries cancel\+Target} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_robot_target_ad3ee4acfd24df45ba9e96ab5bf534f20}{Robot\+Target}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_robot_target}{Robot\+Target}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot_target_a9b4f839617cd966a257a929a354bb4b1}{$\sim$\+Robot\+Target}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{class_robot_target}{Robot\+Target}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_target_a2f13f91d8b046588e19b4b1a15ae4f6f}{set\+Target}} (double x, double y)
+\begin{DoxyCompactList}\small\item\em Sets a new target position for the robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_target_a560d2067226744ad73d92144d26b132b}{cancel\+Target}} ()
+\begin{DoxyCompactList}\small\item\em Cancels the current target goal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+A class to handle robot target operations. 
+
+This class provides functionality to set and cancel robot targets, subscribe to odometry data, and publish simplified odometry information. It also includes a thread to handle user input. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robot_target_ad3ee4acfd24df45ba9e96ab5bf534f20}\label{class_robot_target_ad3ee4acfd24df45ba9e96ab5bf534f20}} 
+\index{RobotTarget@{RobotTarget}!RobotTarget@{RobotTarget}}
+\index{RobotTarget@{RobotTarget}!RobotTarget@{RobotTarget}}
+\doxysubsubsection{\texorpdfstring{RobotTarget()}{RobotTarget()}}
+{\footnotesize\ttfamily Robot\+Target\+::\+Robot\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \mbox{\hyperlink{class_robot_target}{Robot\+Target}} class. 
+
+Initializes the R\+OS node, subscribes to the {\ttfamily /odom} topic, advertises the {\ttfamily /odom\+\_\+simplified} topic, and starts a thread to handle user input. \mbox{\Hypertarget{class_robot_target_a9b4f839617cd966a257a929a354bb4b1}\label{class_robot_target_a9b4f839617cd966a257a929a354bb4b1}} 
+\index{RobotTarget@{RobotTarget}!````~RobotTarget@{$\sim$RobotTarget}}
+\index{````~RobotTarget@{$\sim$RobotTarget}!RobotTarget@{RobotTarget}}
+\doxysubsubsection{\texorpdfstring{$\sim$RobotTarget()}{~RobotTarget()}}
+{\footnotesize\ttfamily Robot\+Target\+::$\sim$\+Robot\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor for the \mbox{\hyperlink{class_robot_target}{Robot\+Target}} class. 
+
+Ensures the input thread is properly stopped and joined before the object is destroyed. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_target_a560d2067226744ad73d92144d26b132b}\label{class_robot_target_a560d2067226744ad73d92144d26b132b}} 
+\index{RobotTarget@{RobotTarget}!cancelTarget@{cancelTarget}}
+\index{cancelTarget@{cancelTarget}!RobotTarget@{RobotTarget}}
+\doxysubsubsection{\texorpdfstring{cancelTarget()}{cancelTarget()}}
+{\footnotesize\ttfamily void Robot\+Target\+::cancel\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cancels the current target goal. 
+
+This function cancels the current goal being pursued by the robot. \mbox{\Hypertarget{class_robot_target_a2f13f91d8b046588e19b4b1a15ae4f6f}\label{class_robot_target_a2f13f91d8b046588e19b4b1a15ae4f6f}} 
+\index{RobotTarget@{RobotTarget}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!RobotTarget@{RobotTarget}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily void Robot\+Target\+::set\+Target (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets a new target position for the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the target position. \\
+\hline
+{\em y} & The y-\/coordinate of the target position.\\
+\hline
+\end{DoxyParams}
+This function sends a new goal to the action server with the specified coordinates. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/robot\+\_\+target.\+cpp\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{robot__target_8cpp}{robot\+\_\+target.\+cpp}}\end{DoxyCompactItemize}
