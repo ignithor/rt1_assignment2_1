@@ -1,0 +1,91 @@
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Summary}\label{md__r_e_a_d_m_e_autotoc_md1}
+This package demonstrates the implementation of a task using an action client in R\+OS. The goal is to manage robot navigation to a target while ensuring non-\/blocking behavior. The solution is developed across two nodes and a launch file, as described below\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{Nodes Implemented\+:}\label{md__r_e_a_d_m_e_autotoc_md2}
+{\itshape Action Client Node and subscriber-\/publisher\+:}
+
+
+\begin{DoxyItemize}
+\item Sends target coordinates (x, y) to the action server.
+\item Provides the ability to cancel the target during execution.
+\item Monitors feedback and status from the action server to determine when the target is reached.
+\item Publishes robot position and velocity as a custom message (x, y, vel\+\_\+x, vel\+\_\+z) based on data from the /odom topic.
+\end{DoxyItemize}
+
+{\itshape Service Node\+:}
+
+
+\begin{DoxyItemize}
+\item Responds to requests with the coordinates of the last target sent by the user.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{Launch File\+:}\label{md__r_e_a_d_m_e_autotoc_md3}
+Starts all the nodes and initializes the simulation environment.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{Installation}\label{md__r_e_a_d_m_e_autotoc_md4}
+First, make sure you have assignment\+\_\+2\+\_\+2024 in your workspace.
+
+You can clone it from github with this link \+:
+
+\href{https://github.com/CarmineD8/assignment_2_2024}{\texttt{ https\+://github.\+com/\+Carmine\+D8/assignment\+\_\+2\+\_\+2024}}
+
+Then, clone the rt1\+\_\+assignment2\+\_\+1 repository into your ros workspace and compile with\+: \begin{DoxyVerb}catkin_make
+\end{DoxyVerb}
+
+
+Then, source your workspace with\+: \begin{DoxyVerb}source devel/setup.bash
+\end{DoxyVerb}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{Launch the Simulation}\label{md__r_e_a_d_m_e_autotoc_md5}
+To launch the whole simulation environment and the two nodes, use the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{roslaunch rt1\_assignment2\_1 all\_assignment.launch}
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Interact with the Robot}\label{md__r_e_a_d_m_e_autotoc_md6}
+Once the nodes launched, you have three choices with the robot\+\_\+target node
+
+
+\begin{DoxyEnumerate}
+\item Enter a target coordinate \`{}\`{}\`{} set x y \`{}\`{}\`{} for example \`{}\`{}\`{} set 3.\+2 2.\+5 \`{}\`{}\`{}
+\item Cancel a target coordinate sent and stop the robot \`{}\`{}\`{}sh cancel \`{}\`{}\`{}
+\item End the node \`{}\`{}\`{} end \`{}\`{}\`{}
+\end{DoxyEnumerate}
+
+You can also in another terminal call the service from the node {\itshape last\+\_\+target\+\_\+service} to get the last target position of the robot\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rosservice call /get\_last\_target}
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{Nodes}\label{md__r_e_a_d_m_e_autotoc_md7}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{robot\+\_\+target}\label{md__r_e_a_d_m_e_autotoc_md8}
+This node is separated of two parts. One is responsible of using the {\itshape Planning\+Action} from the package assignment\+\_\+2\+\_\+2024 to send the coordinate to the action server {\itshape reaching\+\_\+goal}. It works with a thread where we can at any time send a target or cancel the actual one. The other part is a subsriber-\/publisher which subscribe to the topic /odom and publish in the topic /odom\+\_\+simplified with the custom message {\itshape Odom\+\_\+simplified}\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{Subscriber}\label{md__r_e_a_d_m_e_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Topic \+: {\ttfamily /odom} Receives the robot\textquotesingle{}s odometry data.
+\item Type \+: {\ttfamily nav\+\_\+msgs/\+Odometry}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{Publisher}\label{md__r_e_a_d_m_e_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Topic \+: {\ttfamily /odom\+\_\+simplified} Publishes velocity commands to control the robot.
+\item Type \+: {\ttfamily rt1\+\_\+assignment2\+\_\+1/\+Odom\+\_\+simplified}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{last\+\_\+target\+\_\+service}\label{md__r_e_a_d_m_e_autotoc_md11}
+This service node subscribe to the action goal topic $\ast$/reaching\+\_\+goal/goal$\ast$ and store it in a global variable last\+\_\+target. When the service {\ttfamily /get\+\_\+last\+\_\+target} is called, the service return the data of the variable stored.\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{Services}\label{md__r_e_a_d_m_e_autotoc_md12}
+
+\begin{DoxyItemize}
+\item {\ttfamily /get\+\_\+last\+\_\+target}\+: Provides the last target position the robot was commanded to move to.
+\item Custom\+\_\+service \+: {\ttfamily Target}
+\item Answer type \+: {\ttfamily geometry\+\_\+msgs/\+Pose\+Stamped}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{Subscriber}\label{md__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Topic \+: {\ttfamily /reaching\+\_\+goal/goal} Receives the goal coordinate
+\item Type \+: {\ttfamily assignment\+\_\+2\+\_\+2024/\+Planning\+Action\+Goal}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysection{Launch Files}\label{md__r_e_a_d_m_e_autotoc_md14}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{all\+\_\+assignment.\+launch}\label{md__r_e_a_d_m_e_autotoc_md15}
+This launch file \+:
+
+
+\begin{DoxyItemize}
+\item Launch assignment1.\+launch from the package assignment\+\_\+2\+\_\+2024
+\item Run the node robot\+\_\+target and print the log on the console to see the instruction to send the goal coordinate and cancel
+\item Run the node last\+\_\+target\+\_\+service
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{Author}\label{md__r_e_a_d_m_e_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Paul Pham Dang -\/ 7899827
+\item I used the docker image with R\+OS Noetic 
+\end{DoxyItemize}
